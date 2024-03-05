@@ -1,6 +1,7 @@
 const config = require('./src/config');
 
 module.exports = {
+  trailingSlash: `always`,
   siteMetadata: {
     title: config.siteTitle,
     siteUrl: config.siteUrl,
@@ -8,7 +9,6 @@ module.exports = {
     image: '/images/og.png',
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
@@ -17,8 +17,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'ChandrikaDeb',
-        short_name: 'ChandrikaDeb',
+        name: 'Leonardo Guedes',
+        short_name: 'Leo Guedes',
         start_url: '/',
         background_color: config.colors.darkNavy,
         theme_color: config.colors.navy,
@@ -53,21 +53,12 @@ module.exports = {
       options: {
         plugins: [
           {
-            // https://www.gatsbyjs.org/packages/gatsby-remark-external-links
-            resolve: 'gatsby-remark-external-links',
-            options: {
-              target: '_blank',
-              rel: 'nofollow noopener noreferrer',
-            },
-          },
-          {
             // https://www.gatsbyjs.org/packages/gatsby-remark-images
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 700,
               linkImagesToOriginal: true,
               quality: 90,
-              tracedSVG: { color: config.colors.green },
             },
           },
           {
