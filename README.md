@@ -1,43 +1,45 @@
-<div align="center">
-  <img alt="Logo" src="https://github.com/chandrikadeb7/chandrikadeb7.github.io/blob/code/src/images/logo.png" width="100" />
-</div>
-<h1 align="center">
-  Portfolio Website Version 2
-</h1>
+# portfolio-website<img src="src/images/icon.ico" alt="Icon" style="width: 50px; height:50px;"/>
+
 <p align="center">
-  The second iteration of <a href="https://chandrikadeb7.github.io/" target="_blank">chandrikadeb7.github.io</a> built with <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby</a> and hosted with <a href="https://pages.github.com/" target="_blank">Github Pages</a>
-</p>
-<p align="center">
-  Previous iterations:
-  <a href="https://github.com/chandrikadeb7/chandrikadeb7.github.io-v1" target="_blank">Version 1</a>
+  The first iteration of <a href="https://guedesrodriguezleonardo.github.io/" target="_blank">guedesrodriguezleonardo.github.io</a> built with <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby</a> and hosted with <a href="https://pages.github.com/" target="_blank">Github Pages</a>
 </p>
 
 <div align="center">
-  <img alt="Demo" src="https://github.com/chandrikadeb7/chandrikadeb7.github.io/blob/code/src/images/demo.png" />
+  <img alt="Demo" src="src/images/demo.png" />
 </div>
 
-### TL;DR
+### About this repo
+
+This repository is an updated version of [https://github.com/bchiang7/v4](https://github.com/bchiang7/v4), with React updated to version 18 and Gatsby to version 5.
+
+### 🚨 Forking this repo
 
 Yes, you can fork this repo. Please give proper credit by linking back to [brittanychiang.com](https://brittanychiang.com). Thanks!
 
+To make your own portfolio website, follows these steps:
+
+1. Change logo inside `src/components/icons/loader.js` and `src/components/icons/logo.js`
+2. Modify content inside the `content` folder to suit your needs
+3. Follow the instructions in `Steps-to-deploy.md` to deploy on Github Pages
+
 ## 🛠 Installation & Set Up
 
-1. Install the Gatsby CLI
-
-   ```sh
-   npm install -g gatsby-cli
-   ```
-
-2. Install and use the correct version of Node using [NVM](https://github.com/nvm-sh/nvm)
+1. Install and use the correct version of Node using [NVM](https://github.com/nvm-sh/nvm) (Node version 18 or above)
 
    ```sh
    nvm install
    ```
 
+2. Install the Gatsby CLI
+
+   ```sh
+   npm install -g gatsby-cli
+   ```
+
 3. Install dependencies
 
    ```sh
-   yarn
+   npm install
    ```
 
 4. Start the development server
@@ -45,6 +47,8 @@ Yes, you can fork this repo. Please give proper credit by linking back to [britt
    ```sh
    npm start
    ```
+
+5. Go to [localhost:8000](http://localhost:8000)
 
 ## 🚀 Building and Running for Production
 
