@@ -1,25 +1,21 @@
 # Steps to push to deployment
 
-  - git clone
+- git clone
 
-  - cd chandrikadeb7.github.io
+- cd guedesrodriguezleonardo.github.io
 
-  - source ~/.nvm/nvm.sh
+- source ~/.nvm/nvm.sh
 
-  - nvm install node (version 16)
+- nvm install node (version 18 or above)
 
-  - npm install -g yarn
+- npm install -g gatsby-cli
 
-  - yarn
+- npm install
 
-  - npm install -g gatsby-cli
+- git add .
 
-  - npm install
+- git commit -am "changes"
 
-  - git add .
+<!-- - gatsby build -->
 
-  - git commit -am "changes"
-
-  - gatsby build
-
-  - npm run deploy
+- npm run deploy
