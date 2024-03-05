@@ -72,7 +72,7 @@ const StyledTabButton = styled.button`
   white-space: nowrap;
   font-family: ${fonts.SFMono};
   font-size: ${fontSizes.smish};
-  color: ${props => (props.isActive ? colors.green : colors.slate)};
+  color: ${(props) => (props.isActive ? colors.green : colors.slate)};
   ${media.tablet`padding: 0 15px 2px;`};
   ${media.thone`
     ${mixins.flexCenter};
@@ -100,7 +100,7 @@ const StyledHighlight = styled.span`
   transition-delay: 0.1s;
   z-index: 10;
   transform: translateY(
-    ${props => (props.activeTabId > 0 ? props.activeTabId * theme.tabHeight : 0)}px
+    ${(props) => (props.activeTabId > 0 ? props.activeTabId * theme.tabHeight : 0)}px
   );
   ${media.thone`
     width: 100%;
@@ -109,7 +109,7 @@ const StyledHighlight = styled.span`
     top: auto;
     bottom: 0;
     transform: translateX(
-      ${props => (props.activeTabId > 0 ? props.activeTabId * theme.tabWidth : 0)}px
+      ${(props) => (props.activeTabId > 0 ? props.activeTabId * theme.tabWidth : 0)}px
     );
     margin-left: 50px;
   `};
@@ -180,7 +180,7 @@ const Jobs = ({ data }) => {
   // Only re-run the effect if tabFocus changes
   useEffect(() => focusTab(), [tabFocus]);
 
-  const onKeyPressed = e => {
+  const onKeyPressed = (e) => {
     if (e.keyCode === 38 || e.keyCode === 40) {
       e.preventDefault();
       if (e.keyCode === 40) {
@@ -197,7 +197,7 @@ const Jobs = ({ data }) => {
     <StyledContainer id="jobs" ref={revealContainer}>
       <Heading>Where I&apos;ve Worked</Heading>
       <StyledTabs>
-        <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={e => onKeyPressed(e)}>
+        <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={(e) => onKeyPressed(e)}>
           {data &&
             data.map(({ node }, i) => {
               const { company } = node.frontmatter;
@@ -206,12 +206,13 @@ const Jobs = ({ data }) => {
                   <StyledTabButton
                     isActive={activeTabId === i}
                     onClick={() => setActiveTabId(i)}
-                    ref={el => (tabs.current[i] = el)}
+                    ref={(el) => (tabs.current[i] = el)}
                     id={`tab-${i}`}
                     role="tab"
                     aria-selected={activeTabId === i ? true : false}
                     aria-controls={`panel-${i}`}
-                    tabIndex={activeTabId === i ? '0' : '-1'}>
+                    tabIndex={activeTabId === i ? '0' : '-1'}
+                  >
                     <span>{company}</span>
                   </StyledTabButton>
                 </li>
@@ -232,7 +233,8 @@ const Jobs = ({ data }) => {
                 role="tabpanel"
                 aria-labelledby={`tab-${i}`}
                 tabIndex={activeTabId === i ? '0' : '-1'}
-                hidden={activeTabId !== i}>
+                hidden={activeTabId !== i}
+              >
                 <StyledJobTitle>
                   <span>{title}</span>
                   <StyledCompany>

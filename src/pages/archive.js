@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react';
 import { graphql } from 'gatsby';
-import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
@@ -94,6 +93,13 @@ const StyledTable = styled.table`
   }
 `;
 
+export const Head = () => (
+  <>
+    <title>Archive | Leonardo Guedes</title>
+    <link rel="canonical" href="https://guedesrodriguezleonardo.github.io/archive" />
+  </>
+);
+
 const ArchivePage = ({ location, data }) => {
   const projects = data.allMarkdownRemark.edges;
 
@@ -108,11 +114,6 @@ const ArchivePage = ({ location, data }) => {
 
   return (
     <Layout location={location}>
-      <Helmet>
-        <title>Archive | Chandrika Deb</title>
-        <link rel="canonical" href="https://chandrikadeb7.github.io/archive" />
-      </Helmet>
-
       <StyledMainContainer>
         <header ref={revealTitle}>
           <h1 className="big-title">Archive</h1>
@@ -135,7 +136,7 @@ const ArchivePage = ({ location, data }) => {
                 projects.map(({ node }, i) => {
                   const { date, github, external, title, tech, company } = node.frontmatter;
                   return (
-                    <tr key={i} ref={el => (revealProjects.current[i] = el)}>
+                    <tr key={i} ref={(el) => (revealProjects.current[i] = el)}>
                       <td className="overline year">{`${new Date(date).getFullYear()}`}</td>
 
                       <td className="title">{title}</td>
@@ -162,7 +163,8 @@ const ArchivePage = ({ location, data }) => {
                               href={external}
                               target="_blank"
                               rel="nofollow noopener noreferrer"
-                              aria-label="External Link">
+                              aria-label="External Link"
+                            >
                               <FormattedIcon name="External" />
                             </a>
                           )}
@@ -171,7 +173,8 @@ const ArchivePage = ({ location, data }) => {
                               href={github}
                               target="_blank"
                               rel="nofollow noopener noreferrer"
-                              aria-label="GitHub Link">
+                              aria-label="GitHub Link"
+                            >
                               <FormattedIcon name="GitHub" />
                             </a>
                           )}
@@ -198,7 +201,7 @@ export const pageQuery = graphql`
   {
     allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/projects/" } }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
     ) {
       edges {
         node {

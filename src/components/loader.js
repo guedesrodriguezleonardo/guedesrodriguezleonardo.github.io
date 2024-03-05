@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import anime from 'animejs';
 import { IconLoader } from '@components/icons';
@@ -23,7 +22,7 @@ const StyledLogo = styled.div`
   width: max-content;
   max-width: 100px;
   transition: ${theme.transition};
-  opacity: ${props => (props.isMounted ? 1 : 0)};
+  opacity: ${(props) => (props.isMounted ? 1 : 0)};
   svg {
     width: 100%;
     height: 100%;
@@ -37,6 +36,8 @@ const StyledLogo = styled.div`
   }
 `;
 
+// export const Head = ()
+
 const Loader = ({ finishLoading }) => {
   const animate = () => {
     const loader = anime.timeline({
@@ -47,20 +48,20 @@ const Loader = ({ finishLoading }) => {
       .add({
         targets: '#logo path',
         delay: 300,
-        duration: 1500,
+        duration: 900,
         easing: 'easeInOutQuart',
         strokeDashoffset: [anime.setDashoffset, 0],
       })
       .add({
         targets: '#logo #B',
-        duration: 700,
+        duration: 400,
         easing: 'easeInOutQuart',
         opacity: 1,
       })
       .add({
         targets: '#logo',
-        delay: 500,
-        duration: 300,
+        delay: 400,
+        duration: 200,
         easing: 'easeInOutQuart',
         opacity: 0,
         scale: 0.1,
@@ -77,14 +78,14 @@ const Loader = ({ finishLoading }) => {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    const timeout = setTimeout(() => setIsMounted(true), 10);
+    const timeout = setTimeout(() => setIsMounted(true), 5);
     animate();
     return () => clearTimeout(timeout);
   }, []);
 
   return (
     <StyledContainer className="loader">
-      <Helmet bodyAttributes={{ class: `hidden` }} />
+      {/* <Helmet bodyAttributes={{ class: `hidden` }} /> */}
 
       <StyledLogo isMounted={isMounted}>
         <IconLoader />

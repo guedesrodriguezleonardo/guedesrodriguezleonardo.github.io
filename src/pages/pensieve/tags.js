@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { Link, graphql } from 'gatsby';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
@@ -32,6 +31,8 @@ const StyledTagsContainer = styled(Main)`
   }
 `;
 
+export const Head = ({ title }) => <title>{title}</title>;
+
 const TagsPage = ({
   data: {
     allMarkdownRemark: { group },
@@ -42,8 +43,6 @@ const TagsPage = ({
   location,
 }) => (
   <Layout location={location}>
-    <Helmet title={title} />
-
     <StyledTagsContainer>
       <span className="breadcrumb">
         <span className="arrow">&larr;</span>
@@ -52,7 +51,7 @@ const TagsPage = ({
 
       <h1>Tags</h1>
       <ul className="fancy-list">
-        {group.map(tag => (
+        {group.map((tag) => (
           <li key={tag.fieldValue}>
             <Link to={`/pensieve/tags/${kebabCase(tag.fieldValue)}/`}>
               {tag.fieldValue} <span className="count">({tag.totalCount})</span>
@@ -71,7 +70,7 @@ TagsPage.propTypes = {
         PropTypes.shape({
           fieldValue: PropTypes.string.isRequired,
           totalCount: PropTypes.number.isRequired,
-        }).isRequired,
+        }).isRequired
       ),
     }),
     site: PropTypes.shape({
@@ -93,7 +92,7 @@ export const pageQuery = graphql`
       }
     }
     allMarkdownRemark(limit: 2000, filter: { frontmatter: { draft: { ne: true } } }) {
-      group(field: frontmatter___tags) {
+      group(field: { frontmatter: { tags: SELECT } }) {
         fieldValue
         totalCount
       }

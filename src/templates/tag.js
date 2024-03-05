@@ -47,6 +47,7 @@ const StyledTagsContainer = styled(Main)`
 `;
 
 const TagTemplate = ({ pageContext, data, location }) => {
+  console.log(data);
   const { tag } = pageContext;
   const { edges } = data.allMarkdownRemark;
 
@@ -115,7 +116,7 @@ TagTemplate.propTypes = {
               title: PropTypes.string.isRequired,
             }),
           }),
-        }).isRequired,
+        }).isRequired
       ),
     }),
   }),
@@ -123,10 +124,10 @@ TagTemplate.propTypes = {
 };
 
 export const pageQuery = graphql`
-  query($tag: String!) {
+  query ($tag: String!) {
     allMarkdownRemark(
       limit: 2000
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
       filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       totalCount

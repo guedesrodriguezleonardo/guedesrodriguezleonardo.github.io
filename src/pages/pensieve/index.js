@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
-import { Helmet } from 'react-helmet';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import { Layout } from '@components';
@@ -117,16 +116,18 @@ const StyledTags = styled.ul`
   }
 `;
 
+export const Head = () => (
+  <>
+    <title>Pensieve | Leonardo Guedes</title>
+    <link rel="canonical" href="https://guedesrodriguezleonardo.github.io/pensieve" />
+  </>
+);
+
 const PensievePage = ({ location, data }) => {
   const posts = data.allMarkdownRemark.edges;
 
   return (
     <Layout location={location}>
-      <Helmet>
-        <title>Pensieve | Chandrika Deb</title>
-        <link rel="canonical" href="https://chandrikadeb7.github.io/pensieve" />
-      </Helmet>
-
       <StyledMainContainer>
         <header>
           <h1 className="big-title">Pensieve</h1>
@@ -134,7 +135,8 @@ const PensievePage = ({ location, data }) => {
             <a
               href="https://www.wizardingworld.com/writing-by-jk-rowling/pensieve"
               target="_blank"
-              rel="noopener noreferrer">
+              rel="noopener noreferrer"
+            >
               a collection of memories
             </a>
           </p>
@@ -194,7 +196,7 @@ export const pageQuery = graphql`
   {
     allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/posts/" }, frontmatter: { draft: { ne: true } } }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
     ) {
       edges {
         node {

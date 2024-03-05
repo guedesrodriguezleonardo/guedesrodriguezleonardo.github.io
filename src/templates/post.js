@@ -1,6 +1,5 @@
 import React from 'react';
 import { graphql, Link } from 'gatsby';
-import Helmet from 'react-helmet';
 import kebabCase from 'lodash/kebabCase';
 import PropTypes from 'prop-types';
 import { Layout } from '@components';
@@ -35,17 +34,19 @@ const StyledPostContent = styled.div`
   }
 `;
 
+export const Head = () => (
+  <>
+    <title>Pensieve | Leonardo Guedes</title>
+    <link rel="canonical" href="https://guedesrodriguezleonardo.github.io/pensieve" />
+  </>
+);
+
 const PostTemplate = ({ data, location }) => {
   const { frontmatter, html } = data.markdownRemark;
   const { title, date, tags } = frontmatter;
 
   return (
     <Layout location={location}>
-      <Helmet>
-        <title>{title} | Chandrika Deb</title>
-        <link rel="canonical" href="https://chandrikadeb7.github.io/pensieve" />
-      </Helmet>
-
       <StyledPostContainer>
         <span className="breadcrumb">
           <span className="arrow">&larr;</span>

@@ -28,6 +28,9 @@ const StyledOverline = styled.h1`
 const StyledTitle = styled.h2`
   font-size: 80px;
   line-height: 1.1;
+  background: linear-gradient(121.57deg, #ffffff 18.77%, rgba(255, 255, 255, 0.66) 60.15%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin: 0;
   ${media.desktop`font-size: 70px;`};
   ${media.tablet`font-size: 60px;`};
@@ -45,7 +48,7 @@ const StyledSubtitle = styled.h3`
 `;
 const StyledDescription = styled.div`
   margin-top: 25px;
-  width: 50%;
+  width: 60%;
   max-width: 500px;
   a {
     ${mixins.inlineLink};
